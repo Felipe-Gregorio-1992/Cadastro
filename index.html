@@ -72,20 +72,24 @@
             <label for="clientName">Nome do Cliente:</label>
             <input type="text" id="clientName" name="clientName" required>
 
-            <label for="productType">Tipo de Produto (Casa, Moto, Carro):</label>
+            <label for="productType">Tipo de Produto (Casa, Moto, Carro, Outros):</label>
             <input type="text" id="productType" name="productType" required>
-
-            <label for="city">Cidade:</label>
-            <input type="text" id="city" name="city" required>
-
-            <label for="investment">Valor disponível para entrada:</label>
-            <input type="number" id="investment" name="investment" required>
 
             <label for="financing">Modalidade Preferida (Avista ou Parcelado):</label>
             <select id="financing" name="financing">
                 <option value="Avista">Avista</option>
                 <option value="Parcelado">Parcelado</option>
             </select>
+
+            <label for="investment">Valor disponível para entrada:</label>
+            <input type="number" id="investment" name="investment" required>
+
+            <label for="investment-parcela">Valor disponível para parcela:</label>
+            <input type="number" id="investment-parcela" name="investment-parcela" required>
+
+            <label for="city">Cidade:</label>
+            <input type="text" id="city" name="city" required>
+
 
             <label for="incomeProof">Comprova renda ou é autônomo?</label>
             <input type="text" id="incomeProof" name="incomeProof" required>
@@ -108,16 +112,19 @@
             const financing = document.getElementById('financing').value;
             const incomeProof = document.getElementById('incomeProof').value;
             const availability = document.getElementById('availability').value;
+            const investmentparcela = document.getElementById('investment-parcela').value;
+
 
             const formattedMessage = `Nome: *${clientName}*`;
             const formattedMessage2 = `Produto: *${productType}*`;
             const formattedMessage3 = `Cidade: *${city}*`; 
-            const formattedMessage4 = `Valor de Entrada: *${investment}*`; 
+            const formattedMessage4 = `Valor de Entrada: *${investment}*`;
+            const formattedMessage8 = `Valor de Parcela: *${investmentparcela}*`;
             const formattedMessage5 = `Modalidade: *${financing}*`; 
             const formattedMessage6 = `Comprovação de Renda: *${incomeProof}*`; 
             const formattedMessage7 = `Disponibilidade: *${availability}*`;
 
-            const teste = formattedMessage + '\n' + formattedMessage2 + '\n' + formattedMessage3 + '\n' + formattedMessage4 + '\n' + formattedMessage5 + '\n' + formattedMessage6 + '\n' + formattedMessage7;
+            const teste = formattedMessage + '\n' + formattedMessage2 + '\n' + formattedMessage3 + '\n' + formattedMessage4 + '\n' + formattedMessage8 + '\n' + formattedMessage5 + '\n' + formattedMessage6 + '\n' + formattedMessage7;
 
             const myPhoneNumber = 'SEU_NUMERO_DE_TELEFONE';
             const whatsappURL = `https://api.whatsapp.com/send?phone=55${9484178273}&text=${encodeURIComponent(teste)}`;
