@@ -94,8 +94,6 @@
             <label for="city">Cidade: *</label>
             <input type="text" id="city" name="city" required>
 
-            <label for="incomeProof">Comprova renda ou é autônomo? *</label>
-            <input type="text" id="incomeProof" name="incomeProof" required>
 
             <label for="availability">Disponibilidade para visita:</label>
             <textarea id="availability" name="availability" required></textarea>
@@ -134,7 +132,6 @@
             const city = document.getElementById('city').value;
             const investment = document.getElementById('investment').value;
             const financing = document.getElementById('financing').value;
-            const incomeProof = document.getElementById('incomeProof').value;
             const availability = document.getElementById('availability').value;
             const investmentparcela = document.getElementById('investment-parcela').value;
 
@@ -144,10 +141,9 @@
             const formattedMessage4 = `Valor de Entrada: *${investment}*`;
             const formattedMessage8 = `Valor de Parcela: *${investmentparcela}*`;
             const formattedMessage5 = `Modalidade: *${financing}*`; 
-            const formattedMessage6 = `Comprovação de Renda: *${incomeProof}*`; 
             const formattedMessage7 = `Disponibilidade: *${availability}*`;
 
-            const teste = formattedMessage + '\n' + formattedMessage2 + '\n' + formattedMessage3 + '\n' + formattedMessage4 + '\n' + formattedMessage8 + '\n' + formattedMessage5 + '\n' + formattedMessage6 + '\n' + formattedMessage7;
+            const teste = formattedMessage + '\n' + formattedMessage2 + '\n' + formattedMessage3 + '\n' + formattedMessage4 + '\n' + formattedMessage8 + '\n' + formattedMessage5 + '\n' + formattedMessage7;
 
             const myPhoneNumber = 'SEU_NUMERO_DE_TELEFONE';
             const whatsappURL = `https://api.whatsapp.com/send?phone=55${9484178273}&text=${encodeURIComponent(teste)}`;
