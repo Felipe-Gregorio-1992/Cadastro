@@ -95,8 +95,11 @@
             <input type="text" id="city" name="city" required>
 
 
-            <label for="availability">Disponibilidade para visita:</label>
-            <textarea id="availability" name="availability" required></textarea>
+            <label for="availability">Disponibilidade para visita: *</label>
+            <select id="availability" name="availability" required onchange="toggleFields()">
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
 
             <button type="submit">Enviar</button>
         </form>
