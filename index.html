@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário de Vendas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .form-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            background-color: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #1ebd50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Questionário de Vendas</h2>
+        <form id="salesForm">
+            <label for="clientName">Nome do Cliente:</label>
+            <input type="text" id="clientName" name="clientName" required>
+
+            <label for="productType">Tipo de Produto (Casa, Moto, Carro):</label>
+            <input type="text" id="productType" name="productType" required>
+
+            <label for="city">Cidade:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="investment">Valor disponível para entrada:</label>
+            <input type="number" id="investment" name="investment" required>
+
+            <label for="financing">Modalidade Preferida (Avista ou Parcelado):</label>
+            <select id="financing" name="financing">
+                <option value="Avista">Avista</option>
+                <option value="Parcelado">Parcelado</option>
+            </select>
+
+            <label for="incomeProof">Comprova renda ou é autônomo?</label>
+            <input type="text" id="incomeProof" name="incomeProof" required>
+
+            <label for="availability">Disponibilidade para visita:</label>
+            <textarea id="availability" name="availability" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('salesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const clientName = document.getElementById('clientName').value;
+            const productType = document.getElementById('productType').value;
+            const city = document.getElementById('city').value;
+            const investment = document.getElementById('investment').value;
+            const financing = document.getElementById('financing').value;
+            const incomeProof = document.getElementById('incomeProof').value;
+            const availability = document.getElementById('availability').value;
+
+            const formattedMessage = `Nome: *${clientName}*`;
+            const formattedMessage2 = `Produto: *${productType}*`;
+            const formattedMessage3 = `Cidade: *${city}*`; 
+            const formattedMessage4 = `Valor de Entrada: *${investment}*`; 
+            const formattedMessage5 = `Modalidade: *${financing}*`; 
+            const formattedMessage6 = `Comprovação de Renda: *${incomeProof}*`; 
+            const formattedMessage7 = `Disponibilidade: *${availability}*`;
+
+            const teste = formattedMessage + '\n' + formattedMessage2 + '\n' + formattedMessage3 + '\n' + formattedMessage4 + '\n' + formattedMessage5 + '\n' + formattedMessage6 + '\n' + formattedMessage7;
+
+            const myPhoneNumber = 'SEU_NUMERO_DE_TELEFONE';
+            const whatsappURL = `https://api.whatsapp.com/send?phone=55${9484178273}&text=${encodeURIComponent(teste)}`;
+            
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+
+</body>
+</html>
