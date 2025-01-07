@@ -69,29 +69,32 @@
     <div class="form-container">
         <h2>Questionário de Vendas</h2>
         <form id="salesForm">
-            <label for="clientName">Nome do Cliente:</label>
+            <label for="clientName">Nome do Cliente: *</label>
             <input type="text" id="clientName" name="clientName" required>
 
-            <label for="productType">Tipo de Produto (Casa, Moto, Carro, Outros):</label>
+            <label for="productType">Tipo de Produto (Casa, Moto, Carro, Outros): *</label>
             <input type="text" id="productType" name="productType" required>
 
-            <label for="financing">Modalidade Preferida (Avista ou Parcelado):</label>
-            <select id="financing" name="financing">
+            <label for="financing">Modalidade Preferida (Avista ou Parcelado): *</label>
+            <select id="financing" name="financing" required onchange="toggleFields()">
                 <option value="Avista">Avista</option>
                 <option value="Parcelado">Parcelado</option>
             </select>
 
-            <label for="investment">Valor disponível para entrada:</label>
-            <input type="number" id="investment" name="investment" required>
+            <div id="valorEntradaDiv">
+                <label for="investment">Valor disponível para entrada: *</label>
+                <input type="number" id="investment" name="investment" required>
+            </div>
 
-            <label for="investment-parcela">Valor disponível para parcela:</label>
-            <input type="number" id="investment-parcela" name="investment-parcela" required>
+            <div id="valorParceladoDiv">
+                <label for="investment-parcela">Valor disponível para parcela: *</label>
+                <input type="number" id="investment-parcela" name="investment-parcela" required>
+            </div>
 
-            <label for="city">Cidade:</label>
+            <label for="city">Cidade: *</label>
             <input type="text" id="city" name="city" required>
 
-
-            <label for="incomeProof">Comprova renda ou é autônomo?</label>
+            <label for="incomeProof">Comprova renda ou é autônomo? *</label>
             <input type="text" id="incomeProof" name="incomeProof" required>
 
             <label for="availability">Disponibilidade para visita:</label>
@@ -102,6 +105,27 @@
     </div>
 
     <script>
+        function toggleFields() {
+            var financing = document.getElementById("financing").value;
+            var valorEntradaDiv = document.getElementById("valorEntradaDiv");
+            var valorParceladoDiv = document.getElementById("valorParceladoDiv");
+
+            if (financing === "Avista") {
+                valorEntradaDiv.style.display = "none"; // Esconde o campo de valor de entrada
+                valorParceladoDiv.style.display = "none"; // Esconde o campo de valor de parcela
+                document.getElementById("investment").removeAttribute("required"); // Remove o required do valor de entrada
+                document.getElementById("investment-parcela").removeAttribute("required"); // Remove o required do valor de parcela
+            } else {
+                valorEntradaDiv.style.display = "block"; // Mostra o campo de valor de entrada
+                valorParceladoDiv.style.display = "block"; // Mostra o campo de valor de parcela
+                document.getElementById("investment").setAttribute("required", "true"); // Adiciona o required no valor de entrada
+                document.getElementById("investment-parcela").setAttribute("required", "true"); // Adiciona o required no valor de parcela
+            }
+        }
+
+        // Chama a função inicialmente para garantir o estado correto dos campos
+        toggleFields();
+
         document.getElementById('salesForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -113,7 +137,6 @@
             const incomeProof = document.getElementById('incomeProof').value;
             const availability = document.getElementById('availability').value;
             const investmentparcela = document.getElementById('investment-parcela').value;
-
 
             const formattedMessage = `Nome: *${clientName}*`;
             const formattedMessage2 = `Produto: *${productType}*`;
